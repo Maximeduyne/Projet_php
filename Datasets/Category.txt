@@ -1,0 +1,10 @@
+1;Alimentaire;debit
+2;Vestimentaire;debit
+3;Loisir;debit
+4;Transport;debit
+5;Logement;debit
+6;Autres;debit
+7;Virement;credit
+8;Dépôt;credit
+9;Salaire;credit
+10;Autres;credit
