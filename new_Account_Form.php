@@ -7,7 +7,7 @@
 
         <h1>Créer un compte</h1>
         
-        <form method="post" action="Create_Account.php">
+        <form method="post" action="create_Account.php">
         
         <div>
             <label for="nom">Nom</label>
@@ -33,9 +33,9 @@
         <div>
             <label for="devise">Devise :</label>
             <SELECT name="devise" id="devise" size="1">
-                <OPTION>EUR (€)</OPTION>
-                <OPTION>USD ($)</OPTION>
-                <OPTION>GBP (£)</OPTION>
+                <OPTION>EUR(€)</OPTION>
+                <OPTION>USD($)</OPTION>
+                <OPTION>GBP(£)</OPTION>
             </SELECT>
         </div>
         
