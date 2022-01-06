@@ -21,11 +21,11 @@ function accountInfoConstructor(){
 
 function validform() {
     if (sizeof(getAccountsFromUser()) >= 10) {
-        echo "Vous ne pouvez pas créer plus de 10 compte";
+        echo "<div class='validationform'><p>Vous ne pouvez pas créer plus de 10 compte</p></div>";
     }
     else {
         fileAppendLine('Account', accountInfoConstructor());
-        echo 'Votre compte ' . $_POST["type"] . ' "' . $_POST["nom"] . '" a bien été créé';
+        echo '<div class="validationform"><p>Votre compte ' . $_POST["type"] . ' "' . $_POST["nom"] . '" a bien été créé</p></div>';
     }
 }
 
@@ -84,7 +84,9 @@ function deleteAccount($userID){
 
 function creationTable($listTitres, $listContent)
 {
-    echo "<table><tr>";
+    echo "<table class='container creation'>
+            <tr>
+            <CAPTION class='title'>Mes Comptes</CAPTION>";
     foreach ($listTitres as $titre) {
         echo "<th>$titre</th>";
     }

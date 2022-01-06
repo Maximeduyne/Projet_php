@@ -15,7 +15,7 @@
 
         ?>
 
-    <a href="index.php">Retour à mes comptes</a>
+    <a class="btnPage" href="index.php">Retour à mes comptes</a>
 
     </body>
 </html>

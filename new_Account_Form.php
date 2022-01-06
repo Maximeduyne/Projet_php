@@ -7,12 +7,13 @@
     </head>
     <body>
 
-        <h1>Créer un compte</h1>
+
 
         <div class="creation container">
+            <h1>Créer un compte</h1>
             <form method="post" action="create_Account.php">
                 <div class="form-group">
-                    <label for="nom">Nom</label>
+                    <label for="nom">Nom :</label>
                     <input type="text" name="nom" id="nom" placeholder="Nom" />
                 </div>
                 <div class="form-group">
@@ -38,18 +39,18 @@
                     </SELECT>
                 </div>
                 <div class="form-group">
-                    <label for="budget">Budget :</label>
-                    <input type="number" name="budget" id="budget" placeholder="budget"/>
-                </div>
-                <div class="form-group">
                     <p>
                         Définissez un budget à ne pas dépasser, une barre de progression apparaitra pour vous informer de la progression :)
                     </p>
+                    <div class="form-group">
+                        <label for="budget">Budget :</label>
+                        <input type="number" name="budget" id="budget" placeholder="budget"/>
+                    </div>
                     <input type="submit" name="valider" value="Valider" />
                 </div>
             </form>
         </div>
 
-        <a id="retour" href="index.php">Retour</a>
+        <a class="btnPage" href="index.php">Retour</a>
 </body>
 </html>
