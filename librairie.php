@@ -62,13 +62,25 @@ function getAccountsFromUser(){
 
     foreach($AccountsBDD as $value ){
         if( $value[0] == userID() ){
-            array_push($Accounts, $value) ;
+            array_push($Accounts, $value);
         }
 
     }
     return $Accounts;
 }
 
+function getOpeFromAccount($Account){
+    $OpeBDD = getFileContent('Operation');
+    $Opes = [];
+
+    foreach($Opes as $value ){
+        if( $value[0] == userID() && $value[1] == $Account){
+            array_push($Opes, $value);
+        }
+
+    }
+    return $Opes;
+}
 
 function fileAppendLine($file, $content){
     file_put_contents("./Datasets/$file.txt", "$content\n", FILE_APPEND);
@@ -82,11 +94,11 @@ function deleteAccount($userID){
     }
 }
 
-function creationTable($listTitres, $listContent)
+function creationTable($titre, $listTitres, $listContent, $cible)
 {
     echo "<table class='container creation'>
             <tr>
-            <CAPTION class='title'>Mes Comptes</CAPTION>";
+            <CAPTION class='title'>$titre</CAPTION>";
     foreach ($listTitres as $titre) {
         echo "<th>$titre</th>";
     }
@@ -96,7 +108,7 @@ function creationTable($listTitres, $listContent)
         foreach ($subject as $info) {
             echo "<td>$info</td>";
         }
-        echo "<td><a href='new_Account_Form.php'>+</a></td></tr>";
+        echo "<td><a href='$cible'>+</a></td></tr>";
     }
     echo '</table>';
 }
@@ -112,7 +124,38 @@ function list_accounts(){
         $organized = array($in[2], $in[3], $in[6], $in[4], $in[5]);
         array_push($content, $organized);
     }
-    creationTable($titres, $content);
+    $cible = './compte.php';
+    creationTable('Mes Comptes', $titres, $content, $cible);
+}
+
+function list_operations($Account){
+    $titres = array('Nom', 'Catégorie', 'Montant', 'Date');
+    $unorganized = getOpeFromAccount($Account[1]);
+    $content = [];
+    foreach ($unorganized as $in){
+        $category = opeType($in[3]);
+        $organized = array($in[4], $category[1], $category[0] . $in[5], $in[6]);
+        array_push($content, $organized);
+    }
+    $cible = './operation.php';
+    creationTable($Account[2], $titres, $content, $cible);
+}
+
+function opeType($typeID){
+    $typesBDD = getFileContent('Category');
+    $type = array(' ', 'Inconnu');
+    foreach ($typesBDD as $value){
+        if ($typeID  == $value[0]){
+            $type[1] = $value[1];
+            switch ($value[2]) {
+                case 'credit':
+                    $type[0] = '+';
+                case 'debit':
+                    $type[0] = '-';
+            }
+        }
+    }
+    return $type;
 }
 
 
