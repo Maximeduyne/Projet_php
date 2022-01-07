@@ -128,7 +128,19 @@ function list_accounts(){
     creationTable('Mes Comptes', $titres, $content, $cible);
 }
 
-function list_operations($Account){
+function list_operations($t){
+    $titres = array('Nom', 'Type', 'Budget', 'Solde', 'Devise');
+    $unorganized = getAccountsFromUser();
+    $content = [];
+    foreach ($unorganized as $in){
+        $organized = array($in[2], $in[3], $in[6], $in[4], $in[5]);
+        array_push($content, $organized);
+    }
+    $cible = './compte.php';
+    creationTable('Mes Comptes', $titres, $content, $cible);
+}
+
+/*function list_operations($Account){
     $titres = array('Nom', 'Catégorie', 'Montant', 'Date');
     $unorganized = getOpeFromAccount($Account[1]);
     $content = [];
@@ -139,7 +151,7 @@ function list_operations($Account){
     }
     $cible = './operation.php';
     creationTable($Account[2], $titres, $content, $cible);
-}
+}*/
 
 function opeType($typeID){
     $typesBDD = getFileContent('Category');
